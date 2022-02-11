@@ -1,69 +1,47 @@
-<!doctype html>
-<html lang="en">
+{% extends "admin/base.html" %} {% block content %}
 
-<head>
-    <title>Admin Panel</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<style>
-    form {
-        margin-top: 30px;
-        text-align: center;
-        margin: 0 auto;
-        padding-top: 50px;
-    }
-    
-    h1 {
-        margin-bottom: 50px;
-        color: azure;
-    }
-    
-    body {
-        background: rgb(136, 179, 219);
-    }
-</style>
-
-<body>
-
-    <div class="container">
-        <div class="row">
-
-            <form action="admin/Skills" method="post">
-                <h1>My Skills</h1>
-
-                <!-- <div class="input-group mb-3">
-
-                    <input type="text" class="form-control" name="Icon" placeholder="Icon">
-
-                </div> -->
-
-                <div class="input-group mb-3">
-                    <input type="" class="form-control" placeholder="Title">
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Describtion</span>
-                    <textarea class="form-control" name="describtion" style="width: 700px;"></textarea>
-                </div>
-                <div class="input-group mb-3">
-                    <button type="submit" class="btn-btn-primary">Add</button>
-                </div>
-            </form>
-
-        </div>
+<!-- Form hisse, burdan daxil olunan inputdaki deyer ashagdaki table dushur -->
+<h1 class="pt-35">Add new <span style="color:#000000;">Skills</span></h1>
+<form action="/admin/Skills.html" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">Skills Title</label>
+        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
     </div>
+    <div class="form-group mt-3">
+        <label class="">Skills Content</label>
+        <textarea name="describtion" class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
+    </div>
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
 
-</html>
+<!-- Bura table qoymaq lazimidr sende de bootsrtao oldugu ucun ozumden gotururem -->
+<div class="pb-60">
+    <table class="table rounded">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Skills title</th>
+                <th scope="col">Skills describtion</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for _skills in skills%}
+            <tr>
+                <td>{{_skills.id}}</td>
+                <td>{{_skills._title}}</td>
+                <td>{{_skills._describtion}}</td>
+                <td><a href="#"><i class="far fa-edit" style="color: #20C997;"></i></a></td>
+                <td><a href="/"><i class="far fa-trash-alt" style="color: #20C997;"></i></a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

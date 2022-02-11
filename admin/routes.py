@@ -1,10 +1,11 @@
-from run import app
-from flask import render_template
+from run import app,db
+from flask import render_template,redirect,url_for,request
+from modules import *
 
 
 @app.route("/admin",methods=['GET','POST'],)
 def admin_index():
-   return render_template('admin/index.html')
+   return render_template('admin/base.html')
 
 users=[]
 @app.route("/admin/contact",methods=['GET','POST'])
@@ -31,10 +32,23 @@ def contact():
 
 @app.route("/admin/Skills",methods=['GET','POST'])
 def my_skills():
+    from modules import Skills
+    from run import db
+    skills = Skills.query.all()
+    # Gozde
     if request.method=='POST':
-        _title=request.title['title']
-        _desc=request.title['describtion']
-        return render_template('admin/Skills.html')
+        _title=request.form['title']
+        _desc=request.form['describtion']
+        skill=Skills(
+            _title=_title,
+            _describtion=_desc 
+        )
+        
+        db.session.add(skill)
+        db.session.commit()
+        return redirect('/admin')
+    
+    return render_template('admin/Skills.html',skills=skills)
     
 
 
