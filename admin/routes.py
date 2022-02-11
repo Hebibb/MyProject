@@ -29,6 +29,14 @@ def contact():
 
     return render_template('admin/contact.html',istifadeciler=users)
 
+@app.route("/admin/Skills",methods=['GET','POST'])
+def my_skills():
+    if request.method=='POST':
+        _title=request.title['title']
+        _desc=request.title['describtion']
+        return render_template('admin/Skills.html')
+    
+
 
 
 
