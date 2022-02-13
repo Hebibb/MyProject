@@ -1,0 +1,53 @@
+{% extends "admin/base.html" %} {% block content %}
+
+<!-- Form hisse, burdan daxil olunan inputdaki deyer ashagdaki table dushur -->
+<h1 class="pt-35"><span style="color:#290707;">Add new Team Member</span></h1>
+<form action="/admin/Ourteam" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">Add File</label>
+        <input type="file" name="filem" class="form-control">
+
+        <label class="mt-5">Your Fullname</label>
+        <input type="text" name="fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="form-group mt-3">
+        <label class="">Profession</label>
+        <input type="text" name="profession" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
+
+
+<!-- Bura table qoymaq lazimidr sende de bootsrtao oldugu ucun ozumden gotururem -->
+<div class="pb-60">
+    <table class="table rounded">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Profession</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in myteam %}
+            <tr>
+                <td>{{member.id}}</td>
+                <td><img width="100px" src="/static/uploads/{{member._fileAdi}}" alt=""></td>
+
+                <td>{{member._fullname}}</td>
+                <td>{{member._profession}}</td>
+                <td><a href="#"><i class="far fa-edit" style="color: #20C997;"></i></a></td>
+                <td><a href="/"><i class="far fa-trash-alt" style="color: #20C997;"></i></a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

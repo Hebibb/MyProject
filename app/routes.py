@@ -1,41 +1,23 @@
 from run import app
 from flask import render_template
+from modules import *
+from admin.routes import *
 
 
 
 @app.route("/",methods=['GET','POST'])
 def app_index():
     from modules import Skills
+    from modules import Contact
+    from modules import Ourteam
+    from modules import GetITouch
+    messages=Contact.query.all()
     skills=Skills.query.all()
-    return render_template('app/index.html',skills=skills)
+    myteam=Ourteam.query.all()
+    elaqe=GetITouch.query.all()
     
+    return render_template('app/index.html',skills=skills,messages=messages,myteam=myteam,elaqe=elaqe)
 
-
-
-
-
-# users=[]
-# @app.route("/admin/contact",methods=['GET','POST'])
-# def contact():
-#     if request.method=='POST':
-#         _ad=request.form['ad ']
-#         _soyad=request.form['soyad ']
-#         _telefon=request.form['telefon ']
-#         _email=request.form['email ']
-#         _message=request.form['message ']
-#         _date=datetime.date.today()
-#         user={
-#             'ad':_ad,
-#             'soyad':_soyad,
-#             'telefon':_telefon,
-#             'email':_email,
-#             'message':_message,
-#             'date':_date
-#         }
-#         users.append(user)
-#         # return redirect('/')
-
-#     return render_template('admin/contact.html',istifadeciler=users)
 
 
 

@@ -124,12 +124,12 @@
                 {%for skill in skills%}
                 <div class="grid-webdesign">
 
-                    <i class="{{skill.icon}}"></i>
+                    <i class="{{skill._icon}}"></i>
                     <h2>
-                        {{skill.skillName}}
+                        {{skill._title}}
                     </h2>
 
-                    <p>{{skill.content}}
+                    <p>{{skill._describtion}}
                     </p>
                 </div>
                 {%endfor%}
@@ -176,15 +176,15 @@
                 <br>
                 <p>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, facere!
-                </p> 
+                </p>
             </div>
 
             <div class="ourteam-grid">
-                {% for ourteam in ourteam_list %}
+                {% for komanda in myteam %}
                 <div class="item">
                     <div class="image-frame">
                         <div class="overlay"></div>
-                        <img src="{{ourteam.images}}" alt="" style="background-size:cover ;">
+                        <img src="../static/uploads/{{komanda._fileAdi}}" alt="" style="background-size:cover ;">
                         <div class="icons">
                             <i class="fab fa-facebook" id="ikona"></i>
                             <i class="fab fa-twitter" id="ikona"></i>
@@ -194,8 +194,8 @@
 
                     </div>
 
-                    <h3>{{ourteam.name}}</h3>
-                    <p>{{ourteam.profession}}</p>
+                    <h3>{{komanda._fullname}}</h3>
+                    <p>{{komanda._profession}}</p>
 
 
                 </div>
@@ -215,67 +215,32 @@
                     <br>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis ipsa, in neque facilis veritatis quaerat <br> dolor nam obcaecati architecto. Pariatur, neque!</p>
                 </div>
+
                 <div class="git-box">
+                    {%for gotcha in elaqe%}
                     <div class="col-box">
 
                         <div class="add-box">
 
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="{{gotcha.ikonam}}"></i>
 
                         </div>
 
                         <div class="add-headers">
-                            <h4>ADDRESS STREET</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
 
-                    </div>
-                    <div class="col-box">
-
-                        <div class="add-box">
-                            <i class="fas fa-phone-alt"></i>
+                            <h4>{{gotcha._title}}</h4>
+                            <p>{{gotcha._cityAdd}}</p>
+                            <p>{{gotcha._countryAdd}}</p>
 
                         </div>
 
-                        <div class="add-headers">
-                            <h4>NUMBER PHONE</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
+
 
 
                     </div>
-                    <div class="col-box">
-
-                        <div class="add-box">
-                            <i class="fas fa-map-marker-alt"></i>
-
-                        </div>
-
-                        <div class="add-headers">
-                            <h4>CITY NUMBER</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                    <div class="col-box">
-
-                        <div class="add-box">
-                            <i class="fas fa-phone-alt"></i>
-
-                        </div>
-
-                        <div class="add-headers">
-                            <h4>ADDRESS EMAIL</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-
-
-                    </div>
-
+                    {%endfor%}
                 </div>
+
             </div>
 
 
@@ -290,18 +255,18 @@
     <!--getintouch-section ends-->
     <section id="form-section">
         <div class="container">
-            <form action="/admin/contact" method="post">
+            <form action="/admin/contact" method="POST" enctype="multipart/form-data">
                 <div class="form-div">
                     <div class="row-1 ">
 
-                        <input type="text " name="ad " id="Name " placeholder=" Name ">
-                        <input type="text " name="soyad " placeholder="Surname ">
+                        <input type="text " name="ad" id="Name " placeholder=" Name ">
+                        <input type="text " name="soyad" placeholder="Surname ">
                     </div>
                     <div class="row-2 ">
-                        <input type="tel " name="telefon " placeholder="Tel ">
-                        <input type="email " name="email " id="Email " placeholder="Email ">
+                        <input type="tel " name="telefon" placeholder="Tel ">
+                        <input type="email " name="email" id="Email " placeholder="Email ">
                     </div>
-                    <textarea name="message " id="Message " cols=" " rows=" " placeholder="   Message "></textarea>
+                    <textarea name="message" id="Message " cols=" " rows=" " placeholder="   Message "></textarea>
                     <div class="form-send ">
                         <button type="submit ">SEND MESSAGE</button>
                     </div>

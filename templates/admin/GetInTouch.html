@@ -1,0 +1,54 @@
+{% extends "admin/base.html" %} {% block content %}
+
+<!-- Form hisse, burdan daxil olunan inputdaki deyer ashagdaki table dushur -->
+<h1 class="pt-35"><span style="color:#000000;">Add Your Contact Details</span></h1>
+<form action="/admin/GetInTouch" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">Your Icon</label>
+        <input type="text" name="ikona" class="form-control">
+        <label class="mt-5">Title</label>
+        <input type="text" name="title" class="form-control">
+
+        <label class="mt-5">City Adress</label>
+        <input type="text" name="City_Add" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <label class="mt-5">Country Adress</label>
+    <input type="text" name="Country_Add" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
+
+
+<!-- Bura table qoymaq lazimidr sende de bootsrtao oldugu ucun ozumden gotururem -->
+<div class="pb-60">
+    <table class="table rounded">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">City Address</th>
+                <th scope="col">Country Address</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for getin in elaqe %}
+            <tr>
+                <td>{{getin.id}}</td>
+                <td>{{getin._title}}</td>
+                <td>{{getin._cityAdd}}</td>
+                <td>{{getin._countryAdd}}</td>
+
+                <td><a href="#"><i class="far fa-edit" style="color: #20C997;"></i></a></td>
+                <td><a href="/"><i class="far fa-trash-alt" style="color: #20C997;"></i></a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
