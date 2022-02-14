@@ -22,7 +22,7 @@ class Ourteam(db.Model):
     _fileAdi=db.Column(db.String(50))
 class GetITouch(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    _ikona=db.Column(db.String(40))
+    _ikonam=db.Column(db.String(40))
     _title=db.Column(db.String(20))
     _cityAdd=db.Column(db.String(100))
     _countryAdd=db.Column(db.String(100))

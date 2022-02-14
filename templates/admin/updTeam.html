@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %} {% block content %}
+
+
+<h1 class="pt-35"><span style="color:#000000;">Change your team member</span></h1>
+<form action="/memberEdit/{{newMember.id}}" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">Your Picture</label>
+        <input type="file" name="filem" value='{{newMember._fileAdi}}' class="form-control">
+        <label class="mt-5">Name and Surname</label>
+        <input type="text" name="fullname" value='{{newMember._fullname}}' class="form-control">
+
+        <label class="mt-5">What do you do?</label>
+        <input type="text" name="profession" value='{{newMember._profession}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div> 
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}

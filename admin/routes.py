@@ -36,6 +36,8 @@ def contact():
         return redirect('/')
     return render_template('admin/contact.html',messages=messages)
 
+
+
 @app.route("/admin/Skills",methods=['GET','POST'])
 def my_skills():
     from modules import Skills
@@ -58,31 +60,18 @@ def my_skills():
     
     return render_template('admin/Skills.html',skills=skills)
     
-@app.route("/admin/Ourteam",methods=['GET','POST'])
-def our_team():
-    from modules import Ourteam
+@app.route("/SkillDelete/<int:id>",methods=["GET","POST"])
+# @login_required
+def Skill_delete(id):
+    from modules import Skills
+ 
     from run import db
-    import os
-    from werkzeug.utils import secure_filename
-    myteam=Ourteam.query.all()
-    if request.method=='POST':
-        file=request.files['filem']
-        filename=file.filename
-        file.save(os.path.join('static/uploads/',filename))
-        _fileAdi=filename
-        _fullname=request.form['fullname']
-        _profession=request.form['profession']
-        team=Ourteam(
-            _fileAdi=filename,
-            _fullname=_fullname,
-            _profession=_profession
-            
-        )
-        db.session.add(team)
-        db.session.commit()
-        return redirect('/admin/Ourteam')
+    skl = Skills.query.filter_by(id=id).first()
+    db.session.delete(skl)
+    db.session.commit()
+    return redirect ("/admin")
     
-    return render_template('admin/Ourteam.html',myteam=myteam)
+
  
 @app.route("/admin/GetInTouch",methods=['GET','POST'])
 def Get_In_T():
@@ -109,11 +98,99 @@ def Get_In_T():
     
     return render_template('admin/GetIntouch.html',elaqe=elaqe)    
     
+@app.route("/GITDelete/<int:id>",methods=["GET","POST"])
+# @login_required
+def GIT_delete(id):
+    from modules import GetITouch
+ 
+    from run import db
+    getit = GetITouch.query.filter_by(id=id).first()
+    db.session.delete(getit)
+    db.session.commit()
+    return redirect ("/admin/GetInTouch")
     
     
     
    
+@app.route("/GITEdit/<int:id>",methods=["GET","POST"])
+# @login_required
+def GIT_edit(id):
+    from modules import GetITouch
+    from run import db
+    newGIT = GetITouch.query.filter_by(id=id).first()
+    if request.method=="POST":
+        getit = GetITouch.query.filter_by(id=id).first()
+        getit._ikonam=request.form["ikona"]   
+        getit._title=request.form["title"]
+        getit._cityAdd=request.form["City_Add"]
+        getit._countryAdd=request.form["Country_Add"]
+        db.session.commit()
+        return redirect("/admin/GetInTouch")
+    return render_template ("/admin/updateGIT.html",newGIT=newGIT)    
 
 
 
+
+
+
+    
+    
+@app.route("/admin/Ourteam",methods=['GET','POST'])
+def our_team():
+    from modules import Ourteam
+    from run import db
+    import os
+    from werkzeug.utils import secure_filename
+    myteam=Ourteam.query.all()
+    if request.method=='POST':
+        file=request.files['filem']
+        filename = secure_filename(file.filename) 
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+   
+        _fullname=request.form['fullname']
+        _profession=request.form['profession']
+        team=Ourteam(
+            _fileAdi=os.path.join(app.config['UPLOAD_FOLDER'],filename),
+            _fullname=_fullname,
+            _profession=_profession
+            
+        )
+        db.session.add(team)
+        db.session.commit()
+        return redirect('/admin/Ourteam')
+    
+    return render_template('admin/Ourteam.html',myteam=myteam)
+ 
+@app.route("/memberDelete/<int:id>",methods=["GET","POST"])
+# @login_required
+def team_delete(id):
+    from modules import Ourteam
+    import os
+    from run import db
+    Member = Ourteam.query.filter_by(id=id).first()
+    filename = Member._fileAdi
+    os.unlink(os.path.join(filename))
+    db.session.delete(Member)
+    db.session.commit()
+    return redirect ("/admin/Ourteam")
+
+
+@app.route("/memberEdit/<int:id>",methods=["GET","POST"])
+# @login_required
+def team_edit(id):
+    from modules import Ourteam
+    from run import db
+    newMember = Ourteam.query.filter_by(id=id).first()
+    if request.method=="POST":
+        Member = Ourteam.query.filter_by(id=id).first()
+        Member._fileAdi = request.form["filem"]   
+        Member._fullname = request.form["fullname"]
+        Member._profession=request.form["profession"]
+        db.session.commit()
+        return redirect("/admin/Ourteam")
+    return render_template ("/admin/updTeam.html",newMember=newMember)
+ 
+ 
+ 
+ 
 

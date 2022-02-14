@@ -573,6 +573,11 @@ transform: translate(255px, -18px); */
     }
     /*our team section ends*/
     
+    .b-comments span:not(:first-child) {
+        margin-right: 20px;
+    }
+    /* blog section ends */
+    
     #getintouch-section {
         height: 600px;
         margin: 0px auto;

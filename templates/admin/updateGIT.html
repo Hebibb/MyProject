@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %} {% block content %}
+
+<!-- Form hisse, burdan daxil olunan inputdaki deyer ashagdaki table dushur -->
+<h1 class="pt-35"><span style="color:#000000;">Update Your Contact Details</span></h1>
+<form action="/GITEdit/{{newGIT.id}}" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">Your Icon</label>
+        <input type="text" name="ikona" value='{{newGIT._ikonam}}' class="form-control">
+        <label class="mt-5">Title</label>
+        <input type="text" name="title" value='{{newGIT._title}}' class="form-control">
+
+        <label class="mt-5">City Adress</label>
+        <input type="text" name="City_Add" value='{{newGIT._cityAdd}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <label class="mt-5">Country Adress</label>
+    <input type="text" name="Country_Add" value='{{newGIT._countryAdd}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
+
+
+
+
+{% endblock %}
