@@ -440,6 +440,10 @@ body {
     background: 0px;
     background-size: cover; */
     
+    #ourteam-section {
+        min-height: 850px;
+    }
+    
     .ourteam-header {
         width: 600px;
         align-items: center;
@@ -573,10 +577,76 @@ transform: translate(255px, -18px); */
     }
     /*our team section ends*/
     
-    .b-comments span:not(:first-child) {
+    .blog-section {
+        background-color: aquamarine;
+        width: 100%;
+        min-height: 630px;
+    }
+    
+    .gen-blog {
+        padding-top: 100px;
+        display: flex;
+    }
+    /* .comments :not(:first-child) {
         margin-right: 20px;
+    } */
+    
+    .b-comments,
+    .blog-pic-content h1,
+    .blog-pic-content p,
+    .blog-pic-content button {
+        margin-top: 10px;
+        color: rgb(54, 52, 52);
+    }
+    
+    .blog-pic-content {
+        padding: 20px;
+    }
+    
+    .blog-pic-content button {
+        border: 1px solid rgb(54, 52, 52);
+        color: rgb(54, 52, 52);
+        background: none;
+        margin-top: 15px;
+        font-size: 14px;
+        padding: 5px 20px 5px 20px;
+        font-family: 'Montserrat', sans-serif;
+        transition: color 0.4s linear;
+        position: relative;
+        transition: 0.6s;
+        cursor: pointer;
+    }
+    
+    .blog-pic {
+        width: 350px;
+        height: 210px;
+        background-color: rgb(249, 248, 250);
+    }
+    
+    .blog-pic img {
+        object-fit: cover;
+        width: 100%;
+    }
+    
+    .blog-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        overflow-x: hidden;
     }
     /* blog section ends */
+    
+    .blog-review-section {
+        margin-top: 100px;
+        width: 100%;
+        background-image: url(/static/images/backgroundphoto.jpg);
+        min-height: 440px;
+        opacity: 1.5;
+        object-fit: cover;
+        /* background: rgba(0, 0, 0, 0.2); */
+    }
+    /* blog-review section ends */
     
     #getintouch-section {
         height: 600px;
