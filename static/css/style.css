@@ -602,7 +602,7 @@ transform: translate(255px, -18px); */
     .blog-section {
         background-color: aquamarine;
         width: 100%;
-        min-height: 630px;
+        min-height: 680px;
     }
     
     .gen-blog {
@@ -624,7 +624,7 @@ transform: translate(255px, -18px); */
     
     .blog-review-section i {
         color: rgb(126, 128, 127);
-        font-size: 30px;
+        font-size: 20px;
         position: absolute;
     }
     
@@ -653,7 +653,7 @@ transform: translate(255px, -18px); */
     
     .blog-pic {
         width: 350px;
-        height: 210px;
+        height: 230px;
         background-color: rgb(249, 248, 250);
     }
     
@@ -675,7 +675,7 @@ transform: translate(255px, -18px); */
         justify-content: center;
         align-items: center;
         gap: 30px;
-        overflow-x: hidden;
+        overflow-y: hidden;
     }
     /* blog section ends */
     

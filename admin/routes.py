@@ -109,9 +109,34 @@ def _blogin():
     return render_template('admin/Blog.html',myblog=myblog)
 
 
+@app.route("/blogDelete/<int:id>",methods=["GET","POST"])
+# @login_required
+def blog_delete(id):
+    from modules import Blogs
+    from run import db
+    myblog = Blogs.query.filter_by(id=id).first()
+    db.session.delete(myblog)
+    db.session.commit()
+    return redirect ("/admin/Blog")
 
 
-
+@app.route("/blogEdit/<int:id>",methods=["GET","POST"])
+# @login_required
+def blog_edit(id):
+    from modules import Blogs
+    from run import db
+    newblog = Ourteam.query.filter_by(id=id).first()
+    if request.method=="POST":
+        new_bl = Blogs.query.filter_by(id=id).first()
+    
+        new_bl.blog_title = request.form["bl_title"]
+        new_bl.blog_cont=request.form["bl_content"]
+        blog_url=request.form["bl_url"]
+        
+        
+        db.session.commit()
+        return redirect("/admin/Blog")
+    return render_template ("/admin/updBlog.html",newblog=newblog)
 
 
 

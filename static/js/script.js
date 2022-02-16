@@ -6,9 +6,13 @@ window.onscroll = function() {
 window.onload = function() {
     loadinfunc()
 }
+yukleme = window.onload
 
 function loadinfunc() {
-    btn.style.display = "none"
+    if (yukleme == true || document.body.scrollTop < 700) {
+        btn.style.display = "none"
+    }
+
 }
 
 function scrollFunction() {
