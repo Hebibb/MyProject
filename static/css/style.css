@@ -18,6 +18,32 @@
         transition: 0.7s;
     }
     
+    #btn-top {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        background-color: rgb(90, 85, 85);
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        font-weight: 900;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.4s;
+        display: none;
+        border-radius: 50%;
+        opacity: 0.8;
+    }
+    
+    #btn-top i {
+        font-size: 20px;
+        color: aliceblue;
+        padding-top: 15px;
+    }
+    
     .main-nav li a:hover {
         font-size: 1.1em;
         transition: 0.7s;
@@ -111,10 +137,6 @@ body {
     .container {
         max-width: 1200px;
         margin: 0px auto;
-    }
-    
-    h1 {
-        margin-top: 80px;
     }
     
     ul {
@@ -587,25 +609,37 @@ transform: translate(255px, -18px); */
         padding-top: 100px;
         display: flex;
     }
-    /* .comments :not(:first-child) {
-        margin-right: 20px;
-    } */
+    
+    .b-comments :not(:first-child) {
+        margin-left: 20px;
+    }
     
     .b-comments,
     .blog-pic-content h1,
     .blog-pic-content p,
-    .blog-pic-content button {
+    .blog-pic-content .readme {
         margin-top: 10px;
         color: rgb(54, 52, 52);
     }
     
-    .blog-pic-content {
-        padding: 20px;
+    .blog-review-section i {
+        color: rgb(126, 128, 127);
+        font-size: 30px;
+        position: absolute;
     }
     
-    .blog-pic-content button {
+    .blog-pic-content p {
+        line-height: 1.5;
+    }
+    
+    .blog-pic-content {
+        padding: 23px;
+    }
+    
+    .blog-pic-content .readme {
         border: 1px solid rgb(54, 52, 52);
         color: rgb(54, 52, 52);
+        text-decoration: none;
         background: none;
         margin-top: 15px;
         font-size: 14px;
@@ -628,6 +662,14 @@ transform: translate(255px, -18px); */
         width: 100%;
     }
     
+    .arrows {
+        position: absolute;
+    }
+    
+    .arrows #sag {
+        transform: translateX(-50%);
+    }
+    
     .blog-container {
         display: flex;
         justify-content: center;
@@ -638,13 +680,79 @@ transform: translate(255px, -18px); */
     /* blog section ends */
     
     .blog-review-section {
-        margin-top: 100px;
         width: 100%;
-        background-image: url(/static/images/backgroundphoto.jpg);
+        background-image: url(/static/images/backimage2.jpg);
         min-height: 440px;
-        opacity: 1.5;
-        object-fit: cover;
+        background-repeat: no-repeat;
         /* background: rgba(0, 0, 0, 0.2); */
+    }
+    
+    .cases {
+        width: inherit;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        position: absolute;
+        margin-left: 250px;
+        gap: 10px;
+    }
+    
+    .review-content p {
+        margin-top: 20px;
+        line-break: loose;
+        color: aliceblue;
+    }
+    
+    .rev-cont {
+        transform: translate(0%, 50%);
+    }
+    
+    .review-content,
+    .cases {
+        margin-top: 25px;
+        line-height: 40px;
+    }
+    
+    .cases:not(:first-child) {
+        margin-right: 10px;
+    }
+    
+    .case {
+        border: 1px solid white;
+        width: 15px;
+        height: 5px;
+    }
+    
+    .review-content h1 {
+        font-size: 25px;
+        color: ivory;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+    
+    .reviewer {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    
+    .review-container:not(:first-child) {
+        margin-top: 10px;
+    }
+    
+    .review-container {
+        width: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .review-content p {
+        line-break: normal;
     }
     /* blog-review section ends */
     

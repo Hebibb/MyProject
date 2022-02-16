@@ -11,12 +11,14 @@ def app_index():
     from modules import Contact
     from modules import Ourteam
     from modules import GetITouch
+    from modules import Blogs
     messages=Contact.query.all()
     skills=Skills.query.all()
     myteam=Ourteam.query.all()
     elaqe=GetITouch.query.all()
+    myblog = Blogs.query.all()
     
-    return render_template('app/index.html',skills=skills,messages=messages,myteam=myteam,elaqe=elaqe)
+    return render_template('app/index.html',skills=skills,messages=messages,myteam=myteam,elaqe=elaqe,myblog=myblog)
 
 
 

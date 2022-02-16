@@ -1,0 +1,64 @@
+{% extends "admin/base.html" %} {% block content %}
+
+<div class="main">
+    <div class="container">
+        <form action="/admin/Blog" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="text-dark" for="exampleInputEmail1">Blogger name</label>
+                <input type="text" name="blogger" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title..">
+            </div>
+            <div class="form-group">
+                <label class="text-dark" for="exampleInputEmail1">Blog Title</label>
+                <input type="text" name="bl_title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title..">
+            </div>
+            <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Blog Content</label>
+                <input type="text" name="bl_content" class="form-control" placeholder="Content..">
+            </div>
+            <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Blog Link</label>
+                <input type="text" name="bl_url" class="form-control" placeholder="Link..">
+            </div>
+            <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Blog Img</label>
+                <input type="file" name="bl_img" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" style="background-color: #252525;">Send</button>
+            <table class="table table-dark my-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">pic</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">link</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Update</th>
+
+                    </tr>
+                </thead>
+                <thead>
+                    {% for blog in myblog %}
+                    <tr>
+                        <td>{{blog.id}}</td>
+                        <td>{{blog.blogger}}</td>
+                        <td>{{blog.bl_pic}}</td>
+                        <td>{{blog.bl_title}}</td>
+                        <td>{{blog.bl_url}}</td>
+                        <td>{{blog.bl_content}}</td>
+                        <td>
+                            <a href="/blDelete/{{blog.id}}">Delete</a>
+                        </td>
+                        <td>
+                            <a href="/blEdit/{{blog.id}}">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

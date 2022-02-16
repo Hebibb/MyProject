@@ -3,11 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
-
+UPLOAD_FOLDER = 'static/uploads/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
    
 from admin.routes import *
 from app.routes import *
 
 if __name__ == '__main__':
-    # db.create_all()
+    db.create_all()
     app.run(port=5000,debug=True)

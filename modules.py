@@ -26,3 +26,13 @@ class GetITouch(db.Model):
     _title=db.Column(db.String(20))
     _cityAdd=db.Column(db.String(100))
     _countryAdd=db.Column(db.String(100))
+class Blogs(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    blogger=db.Column(db.String(50))
+    blog_pic=db.Column(db.String(50))
+    blog_title=db.Column(db.String(20))
+    blog_cont=db.Column(db.String(150))
+    blog_url=db.Column(db.String(80))
+    comment_date=db.Column(db.String(80))
+    
+    

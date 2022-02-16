@@ -72,6 +72,63 @@ def Skill_delete(id):
     return redirect ("/admin")
     
 
+
+
+@app.route("/admin/Blog",methods=['GET','POST'])
+def _blogin():
+    from modules import Blogs
+    from run import db
+    myblog = Blogs.query.all()
+    # Gozde
+    if request.method=='POST':
+        import datetime
+        file=request.files['bl_img']
+        filename = file.filename
+        file.save(os.path.join('static/uploads/',filename))
+        blog_title=request.form['bl_title']
+        blog_cont=request.form['bl_content']
+        blog_url=request.form['bl_url']
+        blogger=request.form['blogger']
+        comment_date=datetime.date.today()
+     
+        
+       
+        blog=Blogs(
+            blog_pic=filename,
+            blog_title=blog_title,
+            blog_cont=blog_cont,
+            blog_url=blog_url,
+            blogger=blogger,
+            comment_date=comment_date
+        )
+        
+        db.session.add(blog)
+        db.session.commit()
+        return redirect('/admin/Blog')
+    
+    return render_template('admin/Blog.html',myblog=myblog)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 @app.route("/admin/GetInTouch",methods=['GET','POST'])
 def Get_In_T():
@@ -102,7 +159,6 @@ def Get_In_T():
 # @login_required
 def GIT_delete(id):
     from modules import GetITouch
- 
     from run import db
     getit = GetITouch.query.filter_by(id=id).first()
     db.session.delete(getit)
@@ -144,13 +200,12 @@ def our_team():
     myteam=Ourteam.query.all()
     if request.method=='POST':
         file=request.files['filem']
-        filename = secure_filename(file.filename) 
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-   
+        filename = file.filename
+        file.save(os.path.join('static/uploads/',filename))
         _fullname=request.form['fullname']
         _profession=request.form['profession']
         team=Ourteam(
-            _fileAdi=os.path.join(app.config['UPLOAD_FOLDER'],filename),
+            _fileAdi=filename,
             _fullname=_fullname,
             _profession=_profession
             
@@ -165,12 +220,9 @@ def our_team():
 # @login_required
 def team_delete(id):
     from modules import Ourteam
-    import os
     from run import db
-    Member = Ourteam.query.filter_by(id=id).first()
-    filename = Member._fileAdi
-    os.unlink(os.path.join(filename))
-    db.session.delete(Member)
+    myteam = Ourteam.query.filter_by(id=id).first()
+    db.session.delete(myteam)
     db.session.commit()
     return redirect ("/admin/Ourteam")
 
