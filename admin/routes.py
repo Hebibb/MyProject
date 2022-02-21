@@ -1,16 +1,56 @@
 from run import app,db
 from flask import render_template,redirect,url_for,request
+from flask_login import LoginManager, UserMixin, login_manager, login_user, login_required, logout_user, current_user
+from run import login_manager
 from modules import *
 import datetime
 import os
 
+# Login
+@login_manager.user_loader
+def load_user(user_id):
+    from modules import Login
+    return Login.query.get(int(user_id))
+
+@app.route("/login", methods = ["GET","POST"])
+def admin_login():
+    from modules import Login
+    from run import db
+    login = Login (
+        admin_username = "Habib",
+        admin_password = "Habib95",
+        log_bool = False
+    )
+    db.session.add(login)
+    db.session.commit()
+    
+    if request.method == "POST":
+        if login.admin_username == request.form["admin_username"] and login.admin_password == request.form["admin_password"]:
+            login_user(login, remember=login.log_bool)
+            return redirect(url_for("admin_index"))
+        else:
+            return redirect(url_for("admin_login"))
+    return render_template("admin/login.html", login = login)
+
+# Gorduyun kimi admin/blog deyende menden login sehife gondermedi yeni username pass ist
+# onu o routa gondermelisen yenidenki login istesun
+# @login_required var bunu her route den sonra verecem bu ne ishe yariyir bu yoxluyacag ozu ki sen login olmusan yoxsa yox
+
+# Logout
+@app.route("/logout")
+@login_required
+def admin_logout():
+    logout_user()
+    return redirect(url_for("app_index"))
 
 @app.route("/admin",methods=['GET','POST'],)
+@login_required
 def admin_index():
    return render_template('admin/base.html')
 
 
 @app.route("/admin/contact",methods=['GET','POST'])
+@login_required
 def contact():
     from modules import Contact
     from run import db
@@ -39,6 +79,7 @@ def contact():
 
 
 @app.route("/admin/Skills",methods=['GET','POST'])
+@login_required
 def my_skills():
     from modules import Skills
     from run import db
@@ -61,7 +102,7 @@ def my_skills():
     return render_template('admin/Skills.html',skills=skills)
     
 @app.route("/SkillDelete/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def Skill_delete(id):
     from modules import Skills
  
@@ -75,6 +116,7 @@ def Skill_delete(id):
 
 
 @app.route("/admin/Blog",methods=['GET','POST'])
+@login_required
 def _blogin():
     from modules import Blogs
     from run import db
@@ -110,7 +152,7 @@ def _blogin():
 
 
 @app.route("/blogDelete/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def blog_delete(id):
     from modules import Blogs
     from run import db
@@ -121,7 +163,7 @@ def blog_delete(id):
 
 
 @app.route("/blogEdit/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def blog_edit(id):
     from modules import Blogs
     from run import db
@@ -156,6 +198,7 @@ def blog_edit(id):
 
  
 @app.route("/admin/GetInTouch",methods=['GET','POST'])
+@login_required
 def Get_In_T():
     from modules import GetITouch
     from run import db
@@ -181,7 +224,7 @@ def Get_In_T():
     return render_template('admin/GetIntouch.html',elaqe=elaqe)    
     
 @app.route("/GITDelete/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def GIT_delete(id):
     from modules import GetITouch
     from run import db
@@ -194,7 +237,7 @@ def GIT_delete(id):
     
    
 @app.route("/GITEdit/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def GIT_edit(id):
     from modules import GetITouch
     from run import db
@@ -217,6 +260,7 @@ def GIT_edit(id):
     
     
 @app.route("/admin/Ourteam",methods=['GET','POST'])
+@login_required
 def our_team():
     from modules import Ourteam
     from run import db
@@ -242,7 +286,7 @@ def our_team():
     return render_template('admin/Ourteam.html',myteam=myteam)
  
 @app.route("/memberDelete/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def team_delete(id):
     from modules import Ourteam
     from run import db
@@ -253,7 +297,7 @@ def team_delete(id):
 
 
 @app.route("/memberEdit/<int:id>",methods=["GET","POST"])
-# @login_required
+@login_required
 def team_edit(id):
     from modules import Ourteam
     from run import db

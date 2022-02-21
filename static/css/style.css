@@ -600,7 +600,7 @@ transform: translate(255px, -18px); */
     /*our team section ends*/
     
     .blog-section {
-        background-color: aquamarine;
+        background-color: rgb(215, 238, 230);
         width: 100%;
         min-height: 680px;
     }
@@ -616,8 +616,7 @@ transform: translate(255px, -18px); */
     
     .b-comments,
     .blog-pic-content h1,
-    .blog-pic-content p,
-    .blog-pic-content .readme {
+    .blog-pic-content p {
         margin-top: 10px;
         color: rgb(54, 52, 52);
     }
@@ -641,14 +640,14 @@ transform: translate(255px, -18px); */
         color: rgb(54, 52, 52);
         text-decoration: none;
         background: none;
-        margin-top: 15px;
         font-size: 14px;
         padding: 5px 20px 5px 20px;
         font-family: 'Montserrat', sans-serif;
         transition: color 0.4s linear;
-        position: relative;
         transition: 0.6s;
         cursor: pointer;
+        bottom: 5px;
+        left: 5px;
     }
     
     .blog-pic {

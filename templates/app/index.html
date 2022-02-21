@@ -280,13 +280,14 @@
     <div class="container">
         
 <div class="review-container">
+    {% for serh in myblog %}   
 <div class="rev-cont">
     <div class="prof-pic">
-        <img src="/static/images/team-1.jpg" alt="" class="reviewer">
+        <img src="/static/images/{{serh.blog_pic}}" alt="" class="reviewer">
     </div>
     <div class="review-content">
-        <h1> Menem Men</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing Voluptates impedit quas reiciendis aliquid odio! Distinctio non doloremque dolores laboriosam asperiores.</p>
+        <h1> {{serh.blogger}}</h1>
+        <p>{{serh.blog_cont}}</p>
         <div class="cases">
             <div class="case"></div>
             <div class="case"></div>
@@ -298,7 +299,7 @@
 
    
 </div>
-
+{% endfor %}
 
 </div>
   

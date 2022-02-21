@@ -2,16 +2,16 @@
 
 
 <h1 class="pt-35"><span style="color:#000000;">Change your team member</span></h1>
-<form action="/blogEdit/{{new_bl.id}}" method="POST" enctype="multipart/form-data">
+<form action="/blogEdit/{{newblog.id}}" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label class="mt-5">New title</label>
-        <input type="text" name="bl_title" value='{{new_bl.blog_title}}' class="form-control">
+        <input type="text" name="bl_title" value='{{newblog.blog_title}}' class="form-control">
 
         <label class="mt-5">What do you do?</label>
-        <input type="text" name="bl_content" value='{{new_bl.blog_cont}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        <input type="text" name="bl_content" value='{{newblog.blog_cont}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
     </div> 
     <label class="mt-5">What do you do?</label>
-        <input type="text" name="bl_url" value='{{new_bl.blog_url}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        <input type="text" name="bl_url" value='{{newblog.blog_url}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
     </div> 
     <div class="submit_button">
         <span></span><button type="submit">Submit</button>

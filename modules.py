@@ -1,4 +1,5 @@
 from run import db
+from flask_login.mixins import UserMixin
 
 class Skills(db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -34,5 +35,12 @@ class Blogs(db.Model):
     blog_cont=db.Column(db.String(150))
     blog_url=db.Column(db.String(80))
     comment_date=db.Column(db.String(80))
-    
+
+# Login
+class Login(UserMixin,db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    admin_username = db.Column(db.String(50))
+    admin_password = db.Column(db.String(50))
+    log_bool = db.Column(db.Boolean)
+
     
