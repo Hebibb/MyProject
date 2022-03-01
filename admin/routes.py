@@ -32,10 +32,6 @@ def admin_login():
             return redirect(url_for("admin_login"))
     return render_template("admin/login.html", login = login)
 
-# Gorduyun kimi admin/blog deyende menden login sehife gondermedi yeni username pass ist
-# onu o routa gondermelisen yenidenki login istesun
-# @login_required var bunu her route den sonra verecem bu ne ishe yariyir bu yoxluyacag ozu ki sen login olmusan yoxsa yox
-
 # Logout
 @app.route("/logout")
 @login_required
@@ -84,7 +80,7 @@ def my_skills():
     from modules import Skills
     from run import db
     skills = Skills.query.all()
-    # Gozde
+
     if request.method=='POST':
         _icon=request.form['icon']
         _title=request.form['title']
@@ -121,7 +117,7 @@ def _blogin():
     from modules import Blogs
     from run import db
     myblog = Blogs.query.all()
-    # Gozde
+  
     if request.method=='POST':
         import datetime
         file=request.files['bl_img']

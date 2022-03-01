@@ -1,0 +1,61 @@
+.carousel:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all .4s ease;
+}
+
+.carousel:hover h1,
+.carousel:hover p,
+.carousel:hover small {
+    color: white;
+}
+
+.carousel h1,
+p,
+small {
+    transition: 0.5s;
+}
+
+.fb-slide-prf img {
+    width: 100px;
+    height: 100px;
+}
+
+.fb-slide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fb-slide-prf,
+.fb-slide-title h1,
+.fb-slide-content p,
+.fb-slide-from small {
+    margin-top: 20px;
+}
+
+.fb-slide-title h1 {
+    /* font-family: "ReadexProRegular"; */
+    font-weight: 600 !important;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.fb-slide-from small {
+    /* font-family: "ReadexProLight"; */
+    font-weight: 400 !important;
+    font-size: 14px;
+}
+
+.fb-slide-content {
+    display: flex;
+    justify-content: center;
+}
+
+.fb-slide-content p {
+    width: 70%;
+    /* font-family: "ReadexProSemiBold"; */
+    font-weight: 500 !important;
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
