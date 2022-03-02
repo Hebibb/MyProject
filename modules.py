@@ -35,6 +35,13 @@ class Blogs(db.Model):
     blog_cont=db.Column(db.String(150))
     blog_url=db.Column(db.String(80))
     comment_date=db.Column(db.String(80))
+class Feedback(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    feeder_pic=db.Column(db.String(30))
+    _name=db.Column(db.String(30))
+    _city=db.Column(db.String(50))
+    _assessment=db.Column(db.String(30))
+    feed_date=db.Column(db.String(30))
 
 # Login
 class Login(UserMixin,db.Model):

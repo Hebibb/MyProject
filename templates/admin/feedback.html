@@ -1,0 +1,67 @@
+{% extends "admin/feedback.html" %} {% block content %}
+<link rel="stylesheet" href="/static/css/blog.css">
+<div class="main">
+    <div class="container">
+        <form action="/admin/Feedback" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="text-dark" for="exampleInputEmail1">Fullname</label>
+                <input type="text" name="feeder" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title..">
+            </div>
+            <div class="form-group">
+                <label class="text-dark" for="exampleInputEmail1">Location</label>
+                <input type="text" name="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title..">
+            </div>
+            <div class="form-group mt-3">
+
+                <label for="exampleInputPassword1">Assessments</label>
+                <div class="mb-3">
+                    <label for="" class="form-label"></label>
+                    <textarea class="form-control" name="assess" placeholder="Content.." rows="3"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Img</label>
+                <input type="file" name="feed_img" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" style="background-color: #252525;">Send</button>
+            <table class="table table-dark my-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Assessment</th>
+               
+                        <th scope="col">Date</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Update</th>
+
+                    </tr>
+                </thead>
+                <thead>
+                    {% for fb in feedb %}
+                    <tr>
+                        <td>{{fb.id}}</td>
+                        <td>{{fb._name}}</td>
+                        <td> <img src="/static/images/{{fb.feeder_pic}}" alt="" style="width: 100px;"></td>
+                        <td>{{fb._city}}</td>
+                        <td>{{fb._assessment}}</td>
+                        <td>{{fb.feed_date}}</td>
+                       
+
+                        <td>
+                            <a href="/FeedDelete/{{fb.id}}">Delete</a>
+                        </td>
+                        <td>
+                            <a href="/FeedEdit/{{fb.id}}">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

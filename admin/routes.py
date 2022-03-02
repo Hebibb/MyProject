@@ -179,7 +179,40 @@ def blog_edit(id):
 
 
 
-
+@app.route("/admin/Feedback",methods=['GET','POST'])
+@login_required
+def _feedbacks():  
+    from modules import Feedback
+    from run import db
+    feedb = Feedback.query.all()
+  
+    if request.method=='POST':
+        import datetime
+        file=request.files['feed_img']
+        filename = file.filename
+        file.save(os.path.join('static/uploads/',filename))
+        _name=request.form['feeder']
+        _city=request.form['city']
+        _assessment=request.form['assess']
+     
+        feed_date=datetime.date.today()
+     
+        
+       
+        feedit=Blogs(
+            feeder_pic=filename,
+            _name=_name,
+            _city=_city,
+            _assessment=_assessment,
+            feed_date=feed_date,
+           
+        )
+        
+        db.session.add(feedit)
+        db.session.commit()
+        return redirect('/admin/Feedback')
+    
+    return render_template('admin/feedback.html',feedb=feedb)
 
 
 

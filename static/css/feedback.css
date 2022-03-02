@@ -1,6 +1,28 @@
 .carousel:hover {
-    background: rgba(0, 0, 0, 0.5);
-    transition: all .4s ease;
+    background: rgba(0, 0, 0, 0.775);
+    transition: all 0.8s ease;
+}
+
+.carousel:hover .feedback {
+    color: aliceblue;
+    transition: 0.8s;
+    opacity: 0.5;
+}
+
+.feedback {
+    position: absolute;
+    font-weight: 700;
+    font-size: 100px;
+    opacity: 0.3;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    bottom: 30px;
+    right: 0px;
+    left: 0px;
+    top: 0px;
 }
 
 .carousel:hover h1,
@@ -16,8 +38,8 @@ small {
 }
 
 .fb-slide-prf img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .fb-slide {
