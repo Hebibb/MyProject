@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %} {% block content %}
+
+
+<h1 class="pt-35"><span style="color:#000000;"></span></h1>
+<form action="/blogEdit/{{newfeed.id}}" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="mt-5">New assessment</label>
+        <input type="text" name="assess" value='{{newfeed._assessment}}' class="form-control">
+
+      
+
+    <div class="submit_button">
+        <span></span><button type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}

@@ -54,7 +54,7 @@
         <div class="main-navbar">
 
             <div class="main-logo">
-                <span>ADSUNT</span>
+                <span>HABIB BABAYEV</span>
             </div>
             <nav>
                 <ul class="main-nav">
@@ -63,7 +63,7 @@
                     <li>
                         <a href="#myskills-section">ABOUT ME</a></li>
                     <li>
-                        <a href="#my-portfolio-section">PORTFOLIO</a></li>
+                        <a href="#feedbacks">FEEDBACK</a></li>
                     <li>
                         <a href="#ourteam-section">TEAM</a></li>
 
@@ -85,7 +85,7 @@
                 <p>
                     Expertiese Recommendation on Web Development.
                 </p>
-                <button class="btn1"> <a href="#my-portfolio-section">MY PORTFOLIO</a> </button>
+                <button class="btn1"> <a href="#feedbacks">CONTACT ME</a> </button>
             </div>
 
         </div>
@@ -295,42 +295,33 @@
                     <small>Baku</small>
                 </div>
                 <div class="fb-slide-content text-center">
-                    <p>dsfdfghgfhsfa</p>
+                    <p>menem</p>
                 </div>
               </div>
               
 
+{% for feeds in feedb %}
 
-            <div class="carousel-item">
-                <div class="d-flex algin-item-center justify-content-center fb-slide-prf">
-                    <img style="border-radius: 50%;object-fit: cover;" src="static/images/rahman.jpg" class="d-block" alt="...">
-                </div>
-                <div class="fb-slide-title text-center">
-                    <h1>aldsda</h1>
-                </div>
-                <div class="fb-slide-from text-center">
-                    <small>sesdldskll</small>
-                </div>
-                <div class="fb-slide-content text-center">
-                    <p>ds;lad'as;ldaanfnkfkg </p>
-                </div>
-            </div>
+
+<div class="carousel-item">
+    <div class="d-flex algin-item-center justify-content-center fb-slide-prf">
+        <img style="border-radius: 50%;object-fit: cover;" src="static/images/{{feeds.feeder_pic}}" class="d-block" alt="...">
+    </div>
+    <div class="fb-slide-title text-center">
+        <h1>{{feeds._name}}</h1>
+    </div>
+    <div class="fb-slide-from text-center">
+        <small>{{feeds._city}}</small>
+    </div>
+    <div class="fb-slide-content text-center">
+        <p>{{feeds._assessment}} </p>
+    </div>
+</div>
+
+
+{% endfor %}
+            
     
-       
-            <div class="carousel-item">
-                <div class="d-flex algin-item-center justify-content-center fb-slide-prf">
-                    <img style="border-radius: 50%;object-fit: cover;" src="static/images/rahman.jpg" class="d-block" alt="...">
-                </div>
-                <div class="fb-slide-title text-center">
-                    <h1>aldsda</h1>
-                </div>
-                <div class="fb-slide-from text-center">
-                    <small>sesdldskll</small>
-                </div>
-                <div class="fb-slide-content text-center">
-                    <p>ds;lad'as;ldaanfnkfkg </p>
-                </div>
-            </div>
         
 
         </div>

@@ -169,7 +169,7 @@ def blog_edit(id):
     
         new_bl.blog_title = request.form["bl_title"]
         new_bl.blog_cont=request.form["bl_content"]
-        blog_url=request.form["bl_url"]
+        blog_url=request.form["bl_url"]#deyisildi
         
         
         db.session.commit()
@@ -199,7 +199,7 @@ def _feedbacks():
      
         
        
-        feedit=Blogs(
+        feedit=Feedback(
             feeder_pic=filename,
             _name=_name,
             _city=_city,
@@ -216,6 +216,34 @@ def _feedbacks():
 
 
 
+@app.route("/FeedDelete/<int:id>",methods=["GET","POST"])
+@login_required
+def feed_delete(id):
+    from modules import Feedback
+    from run import db
+    feedB = Feedback.query.filter_by(id=id).first()
+    db.session.delete(feedb)
+    db.session.commit()
+    return redirect ("/admin/Feedback")
+
+
+@app.route("/FeedEdit/<int:id>",methods=["GET","POST"])
+@login_required
+def feed_edit(id):
+    from modules import Feedback
+    from run import db
+    newfeed = Feedback.query.filter_by(id=id).first()
+    if request.method=="POST":
+        new_feed = Feedback.query.filter_by(id=id).first()
+    
+        new_feed._assessment = request.form["bl_title"]
+        updfeed_date=datetime.date.today()
+        
+        
+        
+        db.session.commit()
+        return redirect("/admin/Feedback")
+    return render_template ("/admin/feedback.html",newfeed=newfeed)
 
 
 
